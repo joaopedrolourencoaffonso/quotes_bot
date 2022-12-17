@@ -1,5 +1,3 @@
-# Esse script pega as frases do autor inserido
-
 # Modulo de importo
 import sqlite3, os
 from telethon import TelegramClient
