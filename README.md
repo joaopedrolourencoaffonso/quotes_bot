@@ -2,7 +2,7 @@
 
 Um bot do telegram para dividir sabedoria com o mundo!Para ver os resultados, basta acessa [meu canal do Telegram](t.me/dosesdesabedoria).
 
-## Bases de Dados
+## Base de Dados
 
 O script utiliza uma base de dados chamada ```citacoes.db```, a qual pode ser criada conforme abaixo:
 
