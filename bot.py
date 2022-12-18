@@ -90,6 +90,8 @@ def main():
             con.commit();
             color = (red, green, blue);
 
+            restantes = cur.execute("select count(*) from citacoes where enviar = 0;").fetchall()[0][0];
+            
             con.close();
 
             resultado = fazedor_de_imagem(frase, autor, imagem, color);
@@ -100,7 +102,7 @@ def main():
         with client:
             client.loop.run_until_complete(enviando_mensagem());
 
-        logger.info(f" - sucesso - '{frase}' '{autor}' '{imagem}'");
+        logger.info(f" - sucesso - '{frase}' '{autor}' '{imagem}'  - {restantes} frases restantes");
 
     except Exception as e:
         logger.error(f" - main - " + str(e));
