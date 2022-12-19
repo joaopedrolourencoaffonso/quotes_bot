@@ -21,7 +21,7 @@ def quebra_lista_alt(lista,comprimento,Font):
             temp = str(lista[0]);
             lista.pop(0);        
             
-            while (14/16)*comprimento >= Font.getlength(temp) and len(lista) != 0:
+            while (13/16)*comprimento >= Font.getlength(temp) and len(lista) != 0:
                 temp = temp + " " + str(lista[0]);
                 lista.pop(0);
 
