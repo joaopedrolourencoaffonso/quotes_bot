@@ -32,7 +32,7 @@ def inserir_manual(autor, frase):
         print("Inserção cancelada.");
 
     else:
-        con = sqlite3.connect('C:\\Users\\Joaoa\\Desktop\\python_rapido\\quotes_bot\\citacoes.db');
+        con = sqlite3.connect('seu_path\\citacoes.db');
         cur = con.cursor();
 
         cur.execute("insert into citacoes values (?,?,0)", (autor, frase));
