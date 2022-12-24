@@ -14,6 +14,41 @@ api_hash = "SUA_API_HASH";
 
 client = TelegramClient('bot', api_id, api_hash)
 
+def inserir_manual(autor, frase):
+    autor = str(autor);
+    frase = str(frase);
+
+    print(f"\n-----------------\nautor: {autor}\nfrase: {frase}")
+
+    x = input("-----------------\nPosso inserir (y/n)?");
+
+    if x not in ('n','y'):
+        print("Erro, opção não reconhecida.")
+            
+    elif frase.find("'") > 0:
+        print("Erro, não pode incluir aspas simples");
+
+    elif x == 'n':
+        print("Inserção cancelada.");
+
+    else:
+        con = sqlite3.connect('C:\\Users\\Joaoa\\Desktop\\python_rapido\\quotes_bot\\citacoes.db');
+        cur = con.cursor();
+
+        cur.execute("insert into citacoes values (?,?,0)", (autor, frase));
+        con.commit();
+
+        x = cur.execute("select count(*) from citacoes;").fetchall()[0][0];
+        print("Citações: ", x);
+
+        print("{");
+        print(f'  "autor":"{autor}"');
+        print(f'  "frase":"{frase}"');
+        print("},")
+
+        con.close();
+
+
 def quebra_lista_alt(lista,comprimento,Font):
     try:
         pedacos = [];
@@ -33,16 +68,15 @@ def quebra_lista_alt(lista,comprimento,Font):
         logger.error(" - quebra_lista_alt - " + str(e));
 
 
-'''Cria nova imagem'''
 def fazedor_de_imagem(frase, autor, imagem, color):
     try:
         '''Convertendo a imagem em objeto escrevível'''
-        imagem = Image.open(f"PATH_DO_DIRETORIO_COM_SUAS_IMAGENS{imagem}");
+        imagem = Image.open(f"seu_path\\{imagem}");
         comprimento, altura = imagem.size;
         draw = ImageDraw.Draw(imagem);
 
-        '''tamanho da frase. CUIDADO: o path para o arquivo de fontes pode ser diferente no seu computador/OS'''
-        Font = ImageFont.truetype(os.path.join("C:\Windows\Fonts", 'Timesi.ttf'), int(comprimento*0.03125));
+        '''tamanho da frase'''
+        Font = ImageFont.truetype(os.path.join("C:\Windows\Fonts", 'Timesi.ttf'), int(comprimento*0.03125))
 
         diferenca = 0;
         
@@ -69,11 +103,76 @@ def fazedor_de_imagem(frase, autor, imagem, color):
         return 0;
 
 
-def main():
-    try:        
-        resultado = 0;
+parser = argparse.ArgumentParser(description='Um bot para gerar imagens e postar no Telegram automaticamente.');
+parser.add_argument('--autor',default=False, help='Pesquisar citações de um dado autor.');
+parser.add_argument('--frase',default=False, help='Pesquisar citações que contenham o termo inserido.');
+parser.add_argument('--inserir',action="store_true",default=False, help='Inserir MANUALMENTE novas frases');
 
-        '''Esse loop é para garantir que, caso haja erro na geração de uma imagem, outra seja feita'''
+args = parser.parse_args();
+
+def main():
+    try:
+        '''OPCOES PARA MANIPULAR A BASE DE DADOS'''
+        '''Mensagem de erro para caso alguém tente inserir uma frase mas esqueça um campo.'''
+        if args.inserir and not (args.frase and args.autor):
+            print("Desculpe, mas é preciso uma frase e um autor, cada um envolto em áspas duplas.");
+            logger.info(f" Erro de insercao de frase");
+            exit();
+
+        '''Inserindo frase. Utiliza input pois supõe que você está fazendo MANUALMENTE. Não é difícil fazer uma versão sem, mas como não preciso, vou deixar assim.'''
+        if args.inserir and args.frase and args.autor:
+            inserir_manual(args.autor, args.frase);
+            exit();
+            
+        '''Pesquisar frases na base de dados entradas que tenham autor E frase com as palavras especificadas. Perceba que não há filtro contra
+        injeções SQL, justamente para facilitar lançar queryes'''
+        if args.autor and args.frase:
+            con = sqlite3.connect('citacoes.db');
+            cur = con.cursor();
+            
+            print("autor: ",str(args.autor));
+            print("frase: ",str(args.frase));
+            print("{:<10} | {:<20} | {:<100}".format("rowid","autor", "frase"));
+            print("------------------------------------------------------------------------------------");
+            for row in cur.execute(f"select rowid, * from citacoes where autor like '{str(args.autor)}' and frase like '{str(args.frase)}'").fetchall():
+                print ("{:<10} | {:<20} | {:<100}".format(row[0], row[1], row[2]))
+                print("------------------------------------------------------------------------------------");
+
+            con.close()
+            exit();
+        
+        '''Pesquisar todas as entradas na DB cujo o nome do autor tenha as palavras especificadas'''
+        if args.autor:
+            con = sqlite3.connect('citacoes.db');
+            cur = con.cursor();
+            
+            print("autor: ",str(args.autor));
+            print("{:<10} | {:<20} | {:<100}".format("rowid","autor", "frase"));
+            print("------------------------------------------------------------------------------------");
+            for row in cur.execute(f"select rowid, * from citacoes where autor like '{str(args.autor)}'").fetchall():
+                print ("{:<10} | {:<20} | {:<100}".format(row[0], row[1, row[2]]))
+                print("------------------------------------------------------------------------------------");
+
+            con.close()
+            exit();
+
+        '''Pesquisar todas as entradas na DB cuja frase tenha as palavras especificadas'''
+        if args.frase:
+            con = sqlite3.connect('citacoes.db');
+            cur = con.cursor();
+            
+            print("frase: ",str(args.frase));
+            print("{:<10} | {:<20} | {:<100}".format("rowid","autor", "frase"));
+            print("------------------------------------------------------------------------------------");
+            for row in cur.execute(f"select rowid, * from citacoes where frase like '{str(args.frase)}'").fetchall():
+                print ("{:<10} | {:<20} | {:<100}".format(row[0], row[1], row[2]))
+                print("------------------------------------------------------------------------------------");
+
+            con.close()
+            exit();
+
+        '''GERANDO E ENVIANDO IMAGEM'''
+        resultado = 0;
         while resultado == 0:
             con = sqlite3.connect('citacoes.db');
             cur = con.cursor();
@@ -91,21 +190,21 @@ def main():
             color = (red, green, blue);
 
             restantes = cur.execute("select count(*) from citacoes where enviar = 0;").fetchall()[0][0];
-            
+
             con.close();
 
             resultado = fazedor_de_imagem(frase, autor, imagem, color);
 
         async def enviando_mensagem():
-            await client.send_file('me',"temp.jpg",caption=f"[Foto original]({link})")
+            await client.send_file('me',"temp.jpg",caption=f"[Foto original]({link})");
 
         with client:
             client.loop.run_until_complete(enviando_mensagem());
 
-        logger.info(f" - sucesso - '{frase}' '{autor}' '{imagem}'  - {restantes} frases restantes");
+        logger.info(f" - sucesso - '{frase}' '{autor}' '{imagem}' - {restantes} frases restantes");
 
     except Exception as e:
         logger.error(f" - main - " + str(e));
 
 if __name__ == '__main__':
-    main();
+    main()
