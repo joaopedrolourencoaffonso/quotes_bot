@@ -150,7 +150,7 @@ def main():
             print("{:<10} | {:<20} | {:<100}".format("rowid","autor", "frase"));
             print("------------------------------------------------------------------------------------");
             for row in cur.execute(f"select rowid, * from citacoes where autor like '{str(args.autor)}'").fetchall():
-                print ("{:<10} | {:<20} | {:<100}".format(row[0], row[1, row[2]]))
+                print ("{:<10} | {:<20} | {:<100}".format(row[0], row[1], row[2]))
                 print("------------------------------------------------------------------------------------");
 
             con.close()
