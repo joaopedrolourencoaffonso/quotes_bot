@@ -17,6 +17,38 @@ api_hash = "API_HASH";
 
 client = TelegramClient('bot', api_id, api_hash)
 
+def stats():
+    try:
+        con = sqlite3.connect('citacoes.db');
+        cur = con.cursor();
+        
+        print("========================================================");
+        '''PEGANDO INFO'''
+        total = cur.execute("select count(*) from citacoes;").fetchall()[0][0];
+        enviadas = cur.execute("select count(*) from citacoes where enviar = 1;").fetchall()[0][0];
+        nao_enviadas = cur.execute("select count(*) from citacoes where enviar = 0;").fetchall()[0][0];
+        tamanho_max = cur.execute("select max(length(autor)) from citacoes;").fetchall()[0][0];
+        autores = cur.execute("select autor, count(*) from citacoes group by autor").fetchall();
+
+        '''EXPONDO INFO'''
+        print("+------------------------------+------------+");
+        print("|        TOTAL DE FRASES       | {:<10} |".format(str(total)));
+        print("|   TOTAL DE FRASES ENVIADAS   | {:<10} |".format(str(enviadas)));
+        print("| TOTAL DE FRASES NÃO ENVIADAS | {:<10} |".format(str(nao_enviadas)));
+        print("+------------------------------+------------+");
+
+        print(f"+-{23*'-'}-+-{10*'-'}-+");
+        formato = "| {:<" + str(tamanho_max) + "} | {:<10} |";
+        for autor in autores:
+            print(formato.format(str(autor[0]),str(autor[1])));
+        print(f"+-{23*'-'}-+-{10*'-'}-+");
+
+        print("========================================================");
+
+    except Exception as e:
+        print("Erro, por favor, veja os logs");
+        logger.error(" - stats - " + str(e));
+
 def delete(rowid):
     try:
         if rowid.isdigit():
@@ -156,12 +188,18 @@ parser.add_argument('--autor',default=False, help='Pesquisar citações de um da
 parser.add_argument('--frase',default=False, help='Pesquisar citações que contenham o termo inserido.');
 parser.add_argument('--inserir',action="store_true",default=False, help='Inserir MANUALMENTE novas frases');
 parser.add_argument('--delete',default=False, help='Deletar frase com base no rowid');
+parser.add_argument('--stats',action="store_true",default=False, help='Gera relatório sobre as informações na base de dados');
 
 args = parser.parse_args();
 
 def main():
     try:
         '''OPCOES PARA MANIPULAR A BASE DE DADOS'''
+        if args.stats:
+            print("GERANDO RELATÓRIO. AGUARDE UM POUCO.");
+            stats();
+            exit();
+            
         if args.delete and (args.frase or args.autor or args.inserir):
             print("Desculpe, mas a opção update não aceita outras opções.");
             exit();
