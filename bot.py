@@ -1,7 +1,10 @@
 # Modulo de importo
-import sqlite3, os
+import sqlite3, os#, sys
 from telethon import TelegramClient
 from PIL import Image, ImageDraw, ImageFont
+
+# Linha de comando
+import argparse
 
 #logging
 import logging
@@ -9,44 +12,88 @@ log_format = "%(levelname)s ;; %(asctime)s ;; %(message)s";
 logging.basicConfig(level=logging.INFO,filename="quotes_bot.log",format=log_format);
 logger = logging.getLogger();
 
-api_id = SUA_API_ID;
-api_hash = "SUA_API_HASH";
+api_id = API_ID;
+api_hash = "API_HASH";
 
 client = TelegramClient('bot', api_id, api_hash)
 
-def inserir_manual(autor, frase):
-    autor = str(autor);
-    frase = str(frase);
+def delete(rowid):
+    try:
+        if rowid.isdigit():
+            rowid = int(rowid);
+            con = sqlite3.connect('citacoes.db');
+            cur = con.cursor();
 
-    print(f"\n-----------------\nautor: {autor}\nfrase: {frase}")
+            temp = cur.execute(f"select * from citacoes where rowid = {rowid};").fetchall();
 
-    x = input("-----------------\nPosso inserir (y/n)?");
+            if temp == []:
+                return "Desculpe, o rowid especificado não foi encontrado."
 
-    if x not in ('n','y'):
-        print("Erro, opção não reconhecida.")
+            else:
+                autor, frase = temp[0][0], temp[0][1];
+
+                print(f'''-----------
+    rowid: {rowid}
+    autor: {autor}
+    frase: {frase};''');
+
+                decisao = input("Deletar?(y/n) ");
+
+                if decisao.lower() in ("y","ye","yes"):
+                    cur.execute(f"delete from citacoes where rowid = {rowid};");
+                    con.commit();
+                    logger.info(f" - Frase deletada - '{rowid}' '{frase}' '{autor}'");
+
+                else:
+                    print("Deleção cancelada.");
+
+                con.close();
             
-    elif frase.find("'") > 0:
-        print("Erro, não pode incluir aspas simples");
 
-    elif x == 'n':
-        print("Inserção cancelada.");
+        else:
+            return "Desculpe, rowid não é um número inteiro, tente novamente."
 
-    else:
-        con = sqlite3.connect('seu_path\\citacoes.db');
-        cur = con.cursor();
+    except Exception as e:
+        logger.error(" - delete - " + str(e));
+    
 
-        cur.execute("insert into citacoes values (?,?,0)", (autor, frase));
-        con.commit();
+def inserir_manual(autor, frase):
+    try:
+        autor = str(autor);
+        frase = str(frase);
 
-        x = cur.execute("select count(*) from citacoes;").fetchall()[0][0];
-        print("Citações: ", x);
+        print(f"\n-----------------\nautor: {autor}\nfrase: {frase}")
 
-        print("{");
-        print(f'  "autor":"{autor}"');
-        print(f'  "frase":"{frase}"');
-        print("},")
+        x = input("-----------------\nPosso inserir (y/n)? ");
 
-        con.close();
+        if x not in ('n','y'):
+            print("Erro, opção não reconhecida.")
+                
+        elif frase.find("'") > 0:
+            print("Erro, não pode incluir aspas simples");
+
+        elif x == 'n':
+            print("Inserção cancelada.");
+
+        else:
+            con = sqlite3.connect('PATH_DO_SEU_COMPUTADOR\\citacoes.db');
+            cur = con.cursor();
+
+            cur.execute("insert into citacoes values (?,?,0)", (autor, frase));
+            con.commit();
+
+            x = cur.execute("select count(*) from citacoes;").fetchall()[0][0];
+            print("Citações: ", x);
+
+            print("{");
+            print(f'  "autor":"{autor}"');
+            print(f'  "frase":"{frase}"');
+            print("},")
+
+            con.close();
+
+    except Exception as e:
+        logger.error(" - inserir_manual - " + str(e));
 
 
 def quebra_lista_alt(lista,comprimento,Font):
@@ -71,11 +118,12 @@ def quebra_lista_alt(lista,comprimento,Font):
 def fazedor_de_imagem(frase, autor, imagem, color):
     try:
         '''Convertendo a imagem em objeto escrevível'''
-        imagem = Image.open(f"seu_path\\{imagem}");
+        imagem = Image.open(f"PATH_PARA_O_DIRETORIO_ONDE_VC_GUARDA_SUAS_IMAGENS\\{imagem}");
         comprimento, altura = imagem.size;
         draw = ImageDraw.Draw(imagem);
 
         '''tamanho da frase'''
+        '''ALERTA: o path abaixo só é válido para o windows 10, edite para outros sistemas operacionais'''
         Font = ImageFont.truetype(os.path.join("C:\Windows\Fonts", 'Timesi.ttf'), int(comprimento*0.03125))
 
         diferenca = 0;
@@ -107,25 +155,29 @@ parser = argparse.ArgumentParser(description='Um bot para gerar imagens e postar
 parser.add_argument('--autor',default=False, help='Pesquisar citações de um dado autor.');
 parser.add_argument('--frase',default=False, help='Pesquisar citações que contenham o termo inserido.');
 parser.add_argument('--inserir',action="store_true",default=False, help='Inserir MANUALMENTE novas frases');
+parser.add_argument('--delete',default=False, help='Deletar frase com base no rowid');
 
 args = parser.parse_args();
 
 def main():
     try:
         '''OPCOES PARA MANIPULAR A BASE DE DADOS'''
-        '''Mensagem de erro para caso alguém tente inserir uma frase mas esqueça um campo.'''
-        if args.inserir and not (args.frase and args.autor):
-            print("Desculpe, mas é preciso uma frase e um autor, cada um envolto em áspas duplas.");
-            logger.info(f" Erro de insercao de frase");
+        if args.delete and (args.frase or args.autor or args.inserir):
+            print("Desculpe, mas a opção update não aceita outras opções.");
             exit();
 
-        '''Inserindo frase. Utiliza input pois supõe que você está fazendo MANUALMENTE. Não é difícil fazer uma versão sem, mas como não preciso, vou deixar assim.'''
+        if args.delete and not (args.frase or args.autor or args.inserir):
+            delete(args.delete);
+            exit();
+        
+        if args.inserir and not (args.frase and args.autor):
+            print("Desculpe, mas é preciso uma frase e um autor, cada um envolto em áspas duplas.");
+            exit();
+
         if args.inserir and args.frase and args.autor:
             inserir_manual(args.autor, args.frase);
             exit();
             
-        '''Pesquisar frases na base de dados entradas que tenham autor E frase com as palavras especificadas. Perceba que não há filtro contra
-        injeções SQL, justamente para facilitar lançar queryes'''
         if args.autor and args.frase:
             con = sqlite3.connect('citacoes.db');
             cur = con.cursor();
@@ -141,7 +193,6 @@ def main():
             con.close()
             exit();
         
-        '''Pesquisar todas as entradas na DB cujo o nome do autor tenha as palavras especificadas'''
         if args.autor:
             con = sqlite3.connect('citacoes.db');
             cur = con.cursor();
@@ -156,7 +207,6 @@ def main():
             con.close()
             exit();
 
-        '''Pesquisar todas as entradas na DB cuja frase tenha as palavras especificadas'''
         if args.frase:
             con = sqlite3.connect('citacoes.db');
             cur = con.cursor();
@@ -207,4 +257,4 @@ def main():
         logger.error(f" - main - " + str(e));
 
 if __name__ == '__main__':
-    main()
+    main();
