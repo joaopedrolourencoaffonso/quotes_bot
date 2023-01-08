@@ -65,7 +65,7 @@
  },
  {"autor": "Will Smith",
   "frase": "Compramos coisas que não precisamos, para fingir ter vidas que não temos, para impressionar pessoas com quem não nos importamos."
- }
+ },
  {
   "autor":"Oscar Wilde",
   "frase":"Os loucos às vezes se curam, os imbecis nunca."
@@ -977,5 +977,8 @@
  {
   "autor":"Provérbio italiano",
   "frase":"Em Roma, faça como os romanos."
+ },
+ {
+  "autor":"Mahatma Gandhi",
+  "frase":"A força não provém da capacidade física. Provém de uma vontade indomável."
  }
-]
