@@ -118,9 +118,9 @@ def inserir_manual(autor, frase):
             print("Citações: ", x);
 
             '''Editando o arquivo. As edições são mais tarde salvas por comando git'''
-            frases = open("C:\\meus_arquivos\\python_rapido\\quotes_bot\\quotes_bot\\citacoes.json","r",encoding="utf8").read();
-            frases = frases[:-2] + ',\n {\n  "autor":"' + autor + '",\n  "frase":"' + frase + '"\n }';
-            open("C:\\meus_arquivos\\python_rapido\\quotes_bot\\quotes_bot\\citacoes.json","w",encoding="utf8").write(frases);
+            frases = open("PATH_DO_SEU_COMPUTADOR\\citacoes.json","r",encoding="utf8").read();
+            frases = frases[:-2] + ',\n {\n  "autor":"' + autor + '",\n  "frase":"' + frase + '"\n}\n]';
+            open("PATH_DO_SEU_COMPUTADOR\\citacoes.json","w",encoding="utf8").write(frases);
 
             con.close();
 
