@@ -189,11 +189,21 @@ parser.add_argument('--frase',default=False, help='Pesquisar citações que cont
 parser.add_argument('--inserir',action="store_true",default=False, help='Inserir MANUALMENTE novas frases');
 parser.add_argument('--delete',default=False, help='Deletar frase com base no rowid');
 parser.add_argument('--stats',action="store_true",default=False, help='Gera relatório sobre as informações na base de dados');
+parser.add_argument('--teste',action="store_true",default=False, help='Gera caption com imagem específica para teste');
 
 args = parser.parse_args();
 
 def main():
     try:
+        '''PARA TESTAR SE IMAGEM É ADEQUADA OU NÃO'''
+        if args.teste:
+            color = input("Cor: ");
+            imagem = input("Imagem: ");
+            frase = input("Frase: ");
+            autor = input("Autor: ")
+            fazedor_de_imagem(frase, autor, imagem, color);
+            exit();
+            
         '''OPCOES PARA MANIPULAR A BASE DE DADOS'''
         if args.stats:
             print("GERANDO RELATÓRIO. AGUARDE UM POUCO.");
