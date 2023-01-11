@@ -1105,5 +1105,25 @@
  {
   "autor":"Neil Armstrong",
   "frase":"Acredito que todo ser humano tem um número finito de batimentos cardíacos. Não pretendo desperdiçar nenhum dos meus."
+ },
+ {
+  "autor":"T.S. Eliot",
+  "frase":"Todo momento é um novo começo."
+ },
+ {
+  "autor":"Malcolm Forbes",
+  "frase":"Quando você para de sonhar, você para de viver."
+ },
+ {
+  "autor":"Doutor Seuss",
+  "frase":"Não chore porque acabou, sorria porque aconteceu."
+ },
+ {
+  "autor":"Abraham Lincoln",
+  "frase":"A melhor maneira de prever seu futuro é cria-lo."
+ },
+ {
+  "autor":"Michael Jordan",
+  "frase":"Você deve esperar grandes coisas de si mesmo antes de poder realizá-las."
  }
 ]
