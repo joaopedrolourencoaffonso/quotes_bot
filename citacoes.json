@@ -1125,5 +1125,25 @@
  {
   "autor":"Michael Jordan",
   "frase":"Você deve esperar grandes coisas de si mesmo antes de poder realizá-las."
+ },
+ {
+  "autor":"Warren Buffett",
+  "frase":"Leva 20 anos para construir uma reputação e cinco minutos para arruiná-la. Se você pensar sobre isso, fará as coisas de maneira diferente."
+ },
+ {
+  "autor":"Audrey Hepburn",
+  "frase":"À medida que envelhecer, você descobrirá que tem duas mãos, uma para ajudar a si mesmo e a outra para ajudar os outros."
+ },
+ {
+  "autor":"Mahatma Gandhi",
+  "frase":"Você não deve perder a fé na humanidade. A humanidade é um oceano; se algumas gotas do oceano estiverem sujas, o oceano não ficará sujo."
+ },
+ {
+  "autor":"Sholom Aleichem",
+  "frase":"A vida é um sonho para o sábio, um jogo para o tolo, uma comédia para o rico, uma tragédia para o pobre."
+ },
+ {
+  "autor":"Aristóteles",
+  "frase":"Não acredite em tudo que você vê na internet."
  }
 ]
