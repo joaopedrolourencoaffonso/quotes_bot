@@ -2,7 +2,31 @@
 
 Um bot do telegram para dividir sabedoria com o mundo!Para ver os resultados, basta acessa [meu canal do Telegram](t.me/dosesdesabedoria).
 
-## Base de Dados
+## Novidades
+
+- Nossa base de dados chegou em 300 frases! 🎉🎉🎉
+- Nova opção "teste" permite gerar imagens sem enviar com base em input específico.
+
+## Planos Futuros
+
+- [x] Gerar captions com base em imagem e frases escolhidas aleatoriamente a partir de base de dados.
+- [x] Mecanismo para adicionar frases na base de dados a partir da linha de comando.
+- [x] Opção para pesquisar na base de dados a partir da linha de comando por frases de um autor
+- [x] Opção para pesquisar na base de dados a partir da linha de comando por frases com determinada string.
+- [x] Opção para pesquisar na base de dados a partir da linha de comando por frases de um autor com determinada string.
+- [x] Gerar caption a partir de imagem, frase e autor especificados na linha de comando
+- [x] Opção para verificar estatísticas básicas sobre a base de dados.
+- [ ] Extrair estatísticas de visualização diretamente do Telegram. 
+- [ ] Opção "install" para criar base de dados sqlite a partir de um único comando.
+- [ ] Automatizar upload das novas frases no Github (feito por git push manual atualmente) 
+- [ ] Gerar imagens com base em inteligência artificial
+- [ ] Watermark
+- [ ] Inserir todas as frases sábias escritas pela raça humana.
+- [x] Inserir todas as frases sábias escritas pelos golfinhos.
+
+## O código
+
+## SQLite
 
 O script utiliza uma base de dados chamada ```citacoes.db```, a qual pode ser criada conforme abaixo:
 
@@ -18,7 +42,7 @@ con.commit()
 ```
 As citações que eu utilizei estão  disponíves [aqui](https://github.com/joaopedrolourencoaffonso/quotes_bot/blob/main/citacoes.json). Uma lista das imagens está disponível [aqui](https://github.com/joaopedrolourencoaffonso/quotes_bot/blob/main/images.json), destaco, porém, que eu não sou proprietário dessas imagens, sendo todas disponibilizadas a partir do [unsplash](https://unsplash.com/).
 
-## O código
+## Python
 
 O código é bem simples, temos três funções: ```main, quebra_lista_alt, fazedor_de_imagem```.
 
@@ -54,7 +78,104 @@ with client:
 ### fazedor_de_imagem
 É a função responsável por escrever a frase selecionada na imagem. Por padrão, a frase é escrita a partir do meio da imagem, utilizando a ```quebra_lista_alt``` para quebrar a frase em diferentes linhas (evitando que a frase saia da imagem). No futuro, pretendo adicionar uma variável "offset" com o objetivo de controlar o ponto de início da frase.
 
-### Fontes
+## Utilização e Opções
+### Help
+Para ver as opções disponíveis, basta acessar a opção "-h"
+```bash
+>python bot.py -h
+usage: bot.py [-h] [--autor AUTOR] [--frase FRASE] [--inserir] [--delete DELETE] [--stats] [--teste]
+
+Um bot para gerar imagens e postar no Telegram automaticamente.
+
+options:
+  -h, --help       show this help message and exit
+  --autor AUTOR    Pesquisar citações de um dado autor.
+  --frase FRASE    Pesquisar citações que contenham o termo inserido.
+  --inserir        Inserir MANUALMENTE novas frases
+  --delete DELETE  Deletar frase com base no rowid
+  --stats          Gera relatório sobre as informações na base de dados
+  --teste          Gera caption com imagem específica para teste
+```
+
+### autor
+
+Essa opção permite visualizar todas as frases escritas pelos autores cujo autor se encaixe no padrão especificado. É interessante notar que a entrada é usada para pesquisar no SQL, ou seja, você pode utilizar o "%" para verificar todos os autores dentro daquele padrão.
+
+```bash
+>python bot.py --autor "Oscar%"
+autor:  Oscar%
+rowid      | autor                | frase
+------------------------------------------------------------------------------------
+232        | Oscar Wilde          | Os loucos às vezes se curam, os imbecis nunca.
+------------------------------------------------------------------------------------
+```
+
+### Frase
+Similar à opção "autor" porém procura por frases contendo a string. Pode ser utilizada em combinação ou **separado** da função a cima para pesquisar por frases:
+```bash
+>python bot.py --autor "Fried%" --frase "%macaco%"
+autor:  Fried%
+frase:  %macaco%
+rowid      | autor                | frase
+------------------------------------------------------------------------------------
+125        | Friedrich Nietzsche  | O macaco é um animal demasiado simpático para que o homem descenda dele.
+------------------------------------------------------------------------------------
+```
+
+### inserir
+
+Usada para inserir frases novas na base de dados e no arquivo json (o qual é usado para exportar as frases para o Github). Após apertar ENTER será exibido um prompt com as strings inseridas. Use a oportunidade para garantir que digitou corretamente e digite "n" caso tenha notado algum erro ou "y" caso tudo certo.
+
+```bash
+>python bot.py --inserir --autor "Terry Pratchett" --frase "A inteligência de uma criatura conhecida como multidão é a raiz quadrada do número de pessoas dentro dela."
+
+-----------------
+autor: Terry Pratchett
+frase: A inteligência de uma criatura conhecida como multidão é a raiz quadrada do número de pessoas dentro dela.
+-----------------
+Posso inserir (y/n)? y
+Citações:  299
+```
+
+### delete
+
+Usada para deletar frases com base no id:
+
+```bash
+>python bot.py --delete 299
+
+-----------------
+rowid: 299
+autor: Terry Pratchett
+frase: A inteligência de uma criatura conhecida como multidão é a raiz quadrada do número de pessoas dentro dela.
+Deletar?(y/n) y
+```
+### stats
+Fornece estatísticas básicas sobre a base de dados, incluindo número de total de frases, número de frases a ser enviado, número de frases para enviar, autores, dentre outras:
+
+```bash
+>python bot.py --stats
+GERANDO RELATÓRIO. AGUARDE UM POUCO.
+========================================================
++------------------------------+------------+
+|        TOTAL DE FRASES       | 300        |
+|   TOTAL DE FRASES ENVIADAS   | 16         |
+| TOTAL DE FRASES NÃO ENVIADAS | 284        |
++------------------------------+------------+
++-------------------------+------------+
+| Abraham Lincoln                | 1          |
+| Agatha Christie                | 3          |
+| Albert Einstein                | 8          |
+| Andrew Carnegie                | 1          |
+...
+| William Blake                  | 1          |
+| William Shakespeare            | 16         |
+| Zenão de Cítio, pensador grego | 2          |
++-------------------------+------------+
+========================================================
+```
+
+## Fontes
 
 * [Automate the Boring Stuff: Breve tutorial sobre o módulo PIL](https://automatetheboringstuff.com/chapter17/)
 * [Documentação do Pillow](https://pillow.readthedocs.io/en/stable/reference/ImageFont.html#PIL.ImageFont.FreeTypeFont.getlength)
