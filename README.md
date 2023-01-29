@@ -16,11 +16,11 @@ Um bot do telegram para dividir sabedoria com o mundo! Para ver os resultados, b
 - [x] Opção para pesquisar na base de dados a partir da linha de comando por frases de um autor com determinada string.
 - [x] Gerar caption a partir de imagem, frase e autor especificados na linha de comando
 - [x] Opção para verificar estatísticas básicas sobre a base de dados.
+- [ ] Watermark
 - [ ] Extrair estatísticas de visualização diretamente do Telegram. 
 - [ ] Opção "install" para criar base de dados sqlite a partir de um único comando.
 - [ ] Automatizar upload das novas frases no Github (feito por git push manual atualmente) 
 - [ ] Gerar imagens com base em inteligência artificial
-- [ ] Watermark
 - [ ] Inserir todas as frases sábias escritas pela raça humana.
 - [x] Inserir todas as frases sábias escritas pelos golfinhos.
 
