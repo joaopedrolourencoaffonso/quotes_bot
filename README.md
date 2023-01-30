@@ -1,6 +1,6 @@
 # quotes_bot
 
-Um bot do telegram para dividir sabedoria com o mundo! Para ver os resultados, basta acessa [meu canal do Telegram](t.me/dosesdesabedoria).
+Um bot do telegram para dividir sabedoria com o mundo! Para ver os resultados, basta acessa [meu canal do Telegram](https://t.me/dosesdesabedoria).
 
 ## Novidades
 
