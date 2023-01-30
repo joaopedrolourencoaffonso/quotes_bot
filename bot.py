@@ -2,6 +2,7 @@
 import sqlite3, os#, sys
 from telethon import TelegramClient
 from PIL import Image, ImageDraw, ImageFont
+from pathlib import Path
 
 # Linha de comando
 import argparse
@@ -16,6 +17,23 @@ api_id = API_ID;
 api_hash = "API_HASH";
 
 client = TelegramClient('bot', api_id, api_hash)
+
+
+def watermark(picture):
+    try:
+        image1 = Image.open('PATH_PARA_SUA_WATERMARK\\watermark.jpg');
+        image2 = Image.open(picture);
+        altura, comprimento = image2.size;
+        watermark = image1.resize((int(altura*0.05), int(altura*0.05)));
+        image2.paste(watermark, (int(0.92*altura), int(0.92*comprimento)));
+        image2.save(picture);
+        image1.close();
+        image2.close();
+        logger.info(f" - watermark - Watermark adicionada à imagem: {picture}.");
+
+    except Exception as e:
+        print("Erro, por favor, veja os logs");
+        logger.error(" - watermark - " + str(e));
 
 def stats():
     try:
@@ -190,11 +208,17 @@ parser.add_argument('--inserir',action="store_true",default=False, help='Inserir
 parser.add_argument('--delete',default=False, help='Deletar frase com base no rowid');
 parser.add_argument('--stats',action="store_true",default=False, help='Gera relatório sobre as informações na base de dados');
 parser.add_argument('--teste',action="store_true",default=False, help='Gera caption com imagem específica para teste');
+parser.add_argument('--watermark',default=False, type=Path,help='Adciona uma watermark à imagem especificada');
 
 args = parser.parse_args();
 
 def main():
     try:
+        '''Adicionando watermark à imagem'''
+        if args.watermark:
+            watermark(args.watermark);
+            exit();
+            
         '''PARA TESTAR SE IMAGEM É ADEQUADA OU NÃO'''
         if args.teste:
             color = input("Cor: ");
