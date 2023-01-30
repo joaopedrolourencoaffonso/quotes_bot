@@ -4,8 +4,8 @@ Um bot do telegram para dividir sabedoria com o mundo! Para ver os resultados, b
 
 ## Novidades
 
-- Nossa base de dados chegou em 300 frases! 🎉🎉🎉
-- Nova opção "teste" permite gerar imagens sem enviar com base em input específico.
+- Nossa base de dados chegou em 374 frases! 🎉🎉🎉
+- Nova opção "watermark" permite adicionar watermarks à imagens por meio da linha de comando.
 
 ## Planos Futuros
 
@@ -16,10 +16,11 @@ Um bot do telegram para dividir sabedoria com o mundo! Para ver os resultados, b
 - [x] Opção para pesquisar na base de dados a partir da linha de comando por frases de um autor com determinada string.
 - [x] Gerar caption a partir de imagem, frase e autor especificados na linha de comando
 - [x] Opção para verificar estatísticas básicas sobre a base de dados.
-- [ ] Watermark
+- [x] Watermark
 - [ ] Extrair estatísticas de visualização diretamente do Telegram. 
 - [ ] Opção "install" para criar base de dados sqlite a partir de um único comando.
 - [ ] Automatizar upload das novas frases no Github (feito por git push manual atualmente) 
+- [ ] Translate code and README to english.
 - [ ] Gerar imagens com base em inteligência artificial
 - [ ] Inserir todas as frases sábias escritas pela raça humana.
 - [x] Inserir todas as frases sábias escritas pelos golfinhos.
