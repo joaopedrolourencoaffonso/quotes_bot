@@ -188,4 +188,4 @@ Adiciona watermark à imagem especificada na linha de comando.
 * [Documentação do Telethon](https://docs.telethon.dev/en/stable/)
 * [Lore Ipsum: Utilizei para testar diferentes tamanhos das frases.](https://www.lipsum.com/feed/html)
 * [Quebrando vetores em vetores menores](https://www.geeksforgeeks.org/break-list-chunks-size-n-python/)
-* [Watermark] https://auth0.com/blog/image-processing-in-python-with-pillow/
+* [Watermark](https://auth0.com/blog/image-processing-in-python-with-pillow/)
