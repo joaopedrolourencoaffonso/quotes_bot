@@ -13,6 +13,9 @@ log_format = "%(levelname)s ;; %(asctime)s ;; %(message)s";
 logging.basicConfig(level=logging.INFO,filename="quotes_bot.log",format=log_format);
 logger = logging.getLogger();
 
+#random
+from random import randint
+
 api_id = API_ID;
 api_hash = "API_HASH";
 
@@ -172,9 +175,12 @@ def fazedor_de_imagem(frase, autor, imagem, color):
         comprimento, altura = imagem.size;
         draw = ImageDraw.Draw(imagem);
 
+        '''ALERTA: o path e fontes abaixo são válidos nos Windows 10 e 11, edite para outros sistemas operacionais'''
+        '''Fontes que podemos utilizar'''
+        fontes = ['Timesi.ttf', 'Seguibl.ttf', 'Nirmalab.ttf', 'Palab.ttf', 'Candaral.ttf'];
+
         '''tamanho da frase'''
-        '''ALERTA: o path abaixo só é válido para o windows 10, edite para outros sistemas operacionais'''
-        Font = ImageFont.truetype(os.path.join("C:\Windows\Fonts", 'Timesi.ttf'), int(comprimento*0.03125))
+        Font = ImageFont.truetype(os.path.join("C:\Windows\Fonts", fontes[randint(0,4)]), int(comprimento*0.03125))
 
         diferenca = 0;
         
@@ -318,12 +324,13 @@ def main():
             resultado = fazedor_de_imagem(frase, autor, imagem, color);
 
         async def enviando_mensagem():
-            await client.send_file('me',"temp.jpg",caption=f"[Foto original]({link})");
+            msg = await client.send_file('me',"temp.jpg",caption=f"[Foto original]({link})");
+            return msg.id;
 
         with client:
-            client.loop.run_until_complete(enviando_mensagem());
+            msg_id = client.loop.run_until_complete(enviando_mensagem());
 
-        logger.info(f" - sucesso - '{frase}' '{autor}' '{imagem}' - {restantes} frases restantes");
+        logger.info(f" - sucesso - {msg_id} - '{frase}' '{autor}' '{imagem}' - {restantes} frases restantes");
 
     except Exception as e:
         logger.error(f" - main - " + str(e));
