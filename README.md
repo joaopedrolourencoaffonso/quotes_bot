@@ -1,10 +1,12 @@
 # quotes_bot
 
+<p align="center"><a href="https://t.me/dosesdesabedoria"><img src="https://github.com/joaopedrolourencoaffonso/quotes_bot/blob/main/watermark.jpg" width="250" height="250"></a></p>
+
 Um bot do telegram para dividir sabedoria com o mundo! Para ver os resultados, basta acessa [meu canal do Telegram](https://t.me/dosesdesabedoria).
 
 ## Novidades
 
-- Nossa base de dados chegou em 381 frases! 🎉🎉🎉
+- Nossa base de dados chegou em 389 frases! 🎉🎉🎉
 - Nova opção "watermark" permite adicionar watermarks à imagens por meio da linha de comando.
 - Novas opções de fontes
 
