@@ -6,7 +6,7 @@ Um bot do telegram para dividir sabedoria com o mundo! Para ver os resultados, b
 
 ## Novidades
 
-- Nossa base de dados chegou em 432 frases! 🎉🎉🎉
+- Nossa base de dados chegou em 459 frases! 🎉🎉🎉
 - Nova opção "watermark" permite adicionar watermarks à imagens por meio da linha de comando.
 - Novas opções de fontes
 
