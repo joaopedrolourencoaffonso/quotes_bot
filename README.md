@@ -21,9 +21,9 @@ Um bot do telegram para dividir sabedoria com o mundo! Para ver os resultados, b
 - [x] Opção para verificar estatísticas básicas sobre a base de dados.
 - [x] Watermark.
 - [x] Novas fontes de letra.
+- [x] [Extrair estatísticas de visualização diretamente do Telegram](https://github.com/joaopedrolourencoaffonso/quotes_bot/tree/main/channel)
 - [ ] Opção "install" para criar base de dados sqlite a partir de um único comando.
 - [ ] Agendar envio de mensagens automaticamente.
-- [ ] Extrair estatísticas de visualização diretamente do Telegram. 
 - [ ] Automatizar upload das novas frases no Github (feito por git push manual atualmente) 
 - [ ] Translate code and README to english.
 - [ ] Gerar imagens com base em inteligência artificial
