@@ -186,6 +186,11 @@ Adiciona watermark à imagem especificada na linha de comando.
 ```bash
 >python bot.py --watermark "path_para_sua_imagem\imagem_alvo.jpg"
 ```
+## Agradecimentos
+* [Unsplash](https://unsplash.com/) - Fotos gratuitas para todos os usos.
+* [Matheus Guerra](https://github.com/devmatheusguerra) - 366 frases perfeitas!
+* [Lonami](https://github.com/LonamiWebs) - criador do projeto [Telethon](https://github.com/LonamiWebs/Telethon)
+
 ## Fontes
 
 * [Automate the Boring Stuff: Breve tutorial sobre o módulo PIL](https://automatetheboringstuff.com/chapter17/)
@@ -194,3 +199,4 @@ Adiciona watermark à imagem especificada na linha de comando.
 * [Lore Ipsum: Utilizei para testar diferentes tamanhos das frases.](https://www.lipsum.com/feed/html)
 * [Quebrando vetores em vetores menores](https://www.geeksforgeeks.org/break-list-chunks-size-n-python/)
 * [Watermark](https://auth0.com/blog/image-processing-in-python-with-pillow/)
+* [Matheus Guerra](https://github.com/devmatheusguerra/frasesJSON/blob/main/frases.json)
