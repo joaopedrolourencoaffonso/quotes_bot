@@ -207,6 +207,39 @@ def fazedor_de_imagem(frase, autor, imagem, color):
         return 0;
 
 
+def agendar(dia):
+    resultado = 0;
+    while resultado == 0:
+        con = sqlite3.connect('citacoes.db');
+        cur = con.cursor();
+        
+        # Selecionando a frase
+        rowid, autor, frase = cur.execute(f"select rowid, autor, frase from citacoes where enviar = 0 ORDER BY RANDOM() LIMIT 1;").fetchall()[0];
+        cur.execute(f"update citacoes set enviar=1 where rowid = {rowid};");
+        con.commit();
+        
+        # Selecionando a imagem
+        imagem, red, green, blue, link = cur.execute(f"SELECT image, red, green, blue, link FROM images WHERE ultima=0 ORDER BY RANDOM() LIMIT 1;").fetchall()[0];
+        cur.execute(f"update images set ultima=0 where ultima=1;");
+        cur.execute(f"update images set ultima=1 where image = '{imagem}';");
+        con.commit();
+        color = (red, green, blue);
+        
+        restantes = cur.execute("select count(*) from citacoes where enviar = 0;").fetchall()[0][0];
+        con.close();
+        
+        resultado = fazedor_de_imagem(frase, autor, imagem, color);
+        
+
+    async def enviando_mensagem():
+        msg = await client.send_file('https://t.me/dosesdesabedoria',"temp.jpg",caption=f"[Foto original]({link})",schedule=dia);
+        return msg.id;
+            
+    with client:
+        msg_id = client.loop.run_until_complete(enviando_mensagem());
+
+    logger.info(f" - sucesso - {msg_id} - '{frase}' '{autor}' '{imagem}' - {restantes} frases restantes");
+
 parser = argparse.ArgumentParser(description='Um bot para gerar imagens e postar no Telegram automaticamente.');
 parser.add_argument('--autor',default=False, help='Pesquisar citações de um dado autor.');
 parser.add_argument('--frase',default=False, help='Pesquisar citações que contenham o termo inserido.');
@@ -220,6 +253,21 @@ args = parser.parse_args();
 
 def main():
     try:
+        '''Agendando envio de mensagens uma semana'''
+        if args.agendar:
+            for i in range(1,8):
+                data = datetime.today().date() + timedelta(days=i);
+                
+                temp = datetime.strptime(str(data) + " 09:00", '%Y-%m-%d %H:%M')
+                agendar(temp);
+                print("Agendado envio para " + str(temp))
+
+                temp = datetime.strptime(str(data) + " 18:00", '%Y-%m-%d %H:%M')
+                agendar(temp);
+                print("Agendado envio para " + str(temp))
+
+            exit();
+
         '''Adicionando watermark à imagem'''
         if args.watermark:
             watermark(args.watermark);
