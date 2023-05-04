@@ -11,7 +11,7 @@ Este repositório é parte do projeto [quotes_bot](https://github.com/joaopedrol
 - [x] Extrair estatísticas acima e armazenar em um arquivo csv especificado pelo usuário
 - [x] Extrair mensagens a partir de id especificado
 - [x] Extrair mensagens até id especificado
-- [x] Extrair últimas "N" mensagens
+- [x] Extrair últimas "N" mensagens, onde "N" é um número especificado pelo usuário
 - [x] Extrair texto das mensagens
 - [ ] Aplicar ciência de dados para identificar palavras/temas mais populares
 
