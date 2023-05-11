@@ -2,7 +2,7 @@
 
 <p align="center"><a href="https://t.me/dosesdesabedoria"><img src="https://github.com/joaopedrolourencoaffonso/quotes_bot/blob/main/watermark.jpg" width="250" height="250"></a></p>
 
-Um bot do telegram para dividir sabedoria com o mundo! Para ver os resultados, basta acessa [meu canal do Telegram](https://t.me/dosesdesabedoria).
+Um bot do telegram para dividir sabedoria com o mundo! Para ver os resultados, basta acessa [meu canal do Telegram](https://t.me/dosesdesabedoria) ou veja as frases no [site oficial](https://joaopedrolourencoaffonso.github.io/quotes_bot/).
 
 ## Novidades
 
