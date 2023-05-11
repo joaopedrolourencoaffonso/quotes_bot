@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frases</title>
+        <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/joaopedrolourencoaffonso/quotes_bot/main/watermark.jpg">
+        <style>
+          body{
+            background-color: #04b54b;
+          }
+          .box{
+            width: 35vh;
+            height: 25vh;
+            border: 5px solid black;
+            padding: 50px;
+            padding-right: 10px;
+            padding-left: 15px;
+            padding-top: 10px;
+            margin: 15px;
+            background-color: #f5f5dc;
+            border-radius: 12px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            font-size: 20px;
+          }
+          .button {
+            background-color: white;
+            border: 2px solid #555555;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition-duration: 0.4s;
+            cursor: pointer;
+          }
+          .button:hover {
+            background-color: #555555;
+            color: white;
+          }
+        </style>
+    </head>
+    <body>
+      <div class="box" id="minhacaixa">
+        <i><p id="frase">Toda grande caminhada começa com um simples passo.</p></i>
+        <i><p id="autor">--Buda</p></i>
+
+        <button class="button" onclick="PegaFrase()">>></button>
+      </div>
+
+<script>
+  async function PegaFrase() {
+    const response = await fetch("https://raw.githubusercontent.com/joaopedrolourencoaffonso/quotes_bot/main/citacoes.json");
+    const data = await response.json();
+    const randomIndex = Math.floor(Math.random() * data.length);
+    const randomAutor = data[randomIndex]['autor'];
+    const randomFrase = data[randomIndex]['frase'];
+    document.getElementById("autor").innerHTML = "-- " + randomAutor;
+    document.getElementById("frase").innerHTML = randomFrase;
+    background();
+    
+    var box = document.getElementById('minhacaixa');
+    if (randomFrase.length > 100) {
+      box.style.width = '45vh';
+      box.style.height = '35vh';
+    } else if (randomFrase.length > 150) {
+      box.style.width = '55vh';
+      box.style.height = '45vh';
+    }  
+    else {
+      box.style.width = '35vh';
+      box.style.height = '25vh';
+    }
+  }
+
+  function background() {
+    colors = ["#eb3434","#E6D2D2","#D8C3A5","#B4A7D6","#E5DED4","#C7B198","#B8B8C0","#00BFFF","#32CD32","#FFD700","#00CED1","#FFA07A","#66CDAA"]
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    document.body.style.backgroundColor = colors[randomIndex];
+  }
+</script>
+    </body>
+</html>
