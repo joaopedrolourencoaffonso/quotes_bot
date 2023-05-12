@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Doses de Sabedoria</title>
+        <title>Frases</title>
         <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/joaopedrolourencoaffonso/quotes_bot/main/watermark.jpg">
         <style>
           body{
             background-color: #04b54b;
           }
           .box{
-            width: 35vh;
-            height: 25vh;
+            width: 55vh;
+            height: 20vh;
             border: 5px solid black;
             padding: 50px;
             padding-right: 10px;
@@ -45,7 +45,7 @@
     <body>
       <div class="box" id="minhacaixa">
         <i><p id="frase">Toda grande caminhada começa com um simples passo.</p></i>
-        <i><p id="autor">--Buda</p></i>
+        <i><p id="autor">    --Buda</p></i>
 
         <button class="button" onclick="PegaFrase()">>></button>
       </div>
@@ -62,17 +62,23 @@
     background();
     
     var box = document.getElementById('minhacaixa');
-    if (randomFrase.length > 100) {
-      box.style.width = '45vh';
-      box.style.height = '35vh';
-    } else if (randomFrase.length > 150) {
-      box.style.width = '55vh';
-      box.style.height = '45vh';
+    if (randomFrase.length > 100 && randomFrase.length < 150) {
+      box.style.width = '65vh';
+      box.style.height = '22vh';
+    } else if (randomFrase.length > 150 && randomFrase.length < 200) {
+      box.style.width = '90vh';
+      box.style.height = '30vh';
+    } else if (randomFrase.length >= 200) {
+      box.style.width = '180vh';
+      box.style.height = '20vh';
     }  
     else {
-      box.style.width = '35vh';
-      box.style.height = '25vh';
+      box.style.width = '60vh';
+      box.style.height = '20vh';
     }
+    var w = window.innerWidth;
+    console.log(randomFrase.length);
+    console.log(0.15*w)
   }
 
   function background() {
