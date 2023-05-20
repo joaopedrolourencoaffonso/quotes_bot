@@ -25,7 +25,7 @@ Um bot do telegram para dividir sabedoria com o mundo! Para ver os resultados, b
 - [X] Agendar envio de mensagens automaticamente.
 - [ ] Opção "install" para criar base de dados sqlite a partir de um único comando.
 - [ ] Automatizar upload das novas frases no Github (feito por git push manual atualmente) 
-- [ ] Translate code and README to english.
+- [X] Translate code and README to english.
 - [ ] Gerar imagens com base em inteligência artificial
 - [ ] Inserir todas as frases sábias escritas pela raça humana.
 - [x] Inserir todas as frases sábias escritas pelos golfinhos.
