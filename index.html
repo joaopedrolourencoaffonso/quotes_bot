@@ -5,7 +5,6 @@
         <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/joaopedrolourencoaffonso/quotes_bot/main/watermark.jpg">
         <style>
           body{
-            //background-color: #04b54b;
             background-image: url('https://images.unsplash.com/photo-1629655110625-1fd7eb8cd06a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80');
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -66,7 +65,6 @@
     background();
     
     var box = document.getElementById('minhacaixa');
-    <!--console.log(randomFrase.length)-->
     if (randomFrase.length > 100 && randomFrase.length < 150) {
       box.style.width = '65vh';
       box.style.height = '22vh';
@@ -82,8 +80,6 @@
       box.style.height = '20vh';
     }
     var w = window.innerWidth;
-    console.log(randomFrase.length);
-    console.log(0.15*w)
   }
 
   function background() {
@@ -119,7 +115,6 @@
     'https://images.unsplash.com/photo-1485780974122-c91bb5dcf725?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
     'https://images.unsplash.com/photo-1502085671122-2d218cd434e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=926&q=80']
     const randomIndex = Math.floor(Math.random() * images.length);
-    //document.body.style.backgroundColor = images[randomIndex];
     document.body.style.backgroundImage = `url(${images[randomIndex]})`;
   }
 </script>
