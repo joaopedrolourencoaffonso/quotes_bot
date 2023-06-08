@@ -2,7 +2,7 @@
 
 <p align="center"><a href="https://t.me/dosesdesabedoria"><img src="https://github.com/joaopedrolourencoaffonso/quotes_bot/blob/main/watermark.jpg" width="250" height="250"></a></p>
 
-Um bot do telegram para dividir sabedoria com o mundo! Para ver os resultados, basta acessa [meu canal do Telegram](https://t.me/dosesdesabedoria) ou veja as frases no [site oficial](https://joaopedrolourencoaffonso.github.io/quotes_bot/).
+Um bot do telegram para dividir sabedoria com o mundo! Para ver os resultados, basta acessar [meu canal do Telegram](https://t.me/dosesdesabedoria), o [site oficial](https://joaopedrolourencoaffonso.github.io/quotes_bot/) ou meu [canal no Youtube](https://www.youtube.com/@ShortsdeSabedoria/shorts).
 
 ## Detalhes
 
@@ -455,6 +455,7 @@ Adiciona watermark à imagem especificada na linha de comando.
 | William Blake                  | 1          |
 | William McKnight               | 1          |
 | xkcd                           | 1          |
+| Abigail Van Buren              | 1          |
 
 ## Agradecimentos
 * [Unsplash](https://unsplash.com/) - Fotos gratuitas para todos os usos.
