@@ -1,5 +1,13 @@
 [
  {
+  "autor":"Victor Hugo",
+  "frase": "O riso é o sol que afasta o inverno do rosto humano."
+ },
+ {
+  "autor":"Pietro Aretino",
+  "frase": "Amemos o inverno, pois é a primavera do gênio."
+ },
+ {
   "autor":"Antoine de Saint-Exupéry",
   "frase": "Só se vê bem com o coração, o essencial é invisível aos olhos."
  },
