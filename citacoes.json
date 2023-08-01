@@ -1,5 +1,161 @@
 [
  {
+  "autor":"Epicteto",
+  "frase":"Nem um návio deve confiar em uma pequena âncora, nem a vida deve descansar em uma única esperança."
+ },
+ {
+  "autor":"Marco Aurélio",
+  "frase":"Pare de se desviar. Reduza suas esperanças e, se seu bem-estar lhe interessar, seja seu próprio salvador."
+ },
+ {
+  "autor":"Cícero",
+  "frase":"Se eu tivesse mais tempo, teria escrito uma carta mais curta."
+ },
+ {
+  "autor":"Sun Tzu",
+  "frase":"Se você não estiver em perigo, não lute."
+ },
+ {
+  "autor":"Aristóteles",
+  "frase":"A paciência é amarga, mas seus frutos são doces."
+ },
+ {
+  "autor":"Sêneca",
+  "frase":"Quem se entrega a medos vazios ganha a si mesmo medos reais."
+ },
+ {
+  "autor":"Marco Aurélio",
+  "frase":"É tolice tentar escapar dos erros de outras pessoas. Eles são inevitáveis. Apenas tente escapar dos seus."
+ },
+ {
+  "autor":"Marco Aurélio",
+  "frase":"Comtempla a essência. Não deixe que a qualidade peculiar das coisas, ou seu valor, ou qualquer outra aparência o iluda."
+ },
+ {
+  "autor":"Heráclito",
+  "frase":"É na mudança que encontramos um objetivo."
+ },
+ {
+  "autor":"Henri Poincaré",
+  "frase":"Duvidar de tudo ou acreditar em tudo são duas soluções igualmente convenientes; ambas dispensam a necessidade de reflexão."
+ },
+ {
+  "autor":"Henry Royce",
+  "frase":"O que for feito corretamente, mesmo que humilde, é nobre."
+ },
+ {
+  "autor":"Stephen Covey",
+  "frase":"Não sou um produto das minhas circunstâncias. Sou um produto das minhas escolhas."
+ },
+ {
+  "autor":"Chuck Palahniuk",
+  "frase":"Você sempre terá alguma desculpa para não viver sua vida."
+ },
+ {
+  "autor":"Marco Aurélio",
+  "frase":"Alguém me destratou? Que seja. Quanto a mim, me satisfaz falar e agir de modo que nenhum dos meus atos ou palavras mereçam desprezo."
+ },
+ {
+  "autor":"Jim Rohn",
+  "frase":"Se você realmente que fazer alguma coisa, encontrará um caminho. Caso contrário, você encontrará uma desculpa."
+ },
+ {
+  "autor":"Epicteto",
+  "frase":"Ele é um homem sábio que não se lamenta pelas coisas que não possui, mas se alegra com as que possui."
+ },
+ {
+  "autor":"Sêneca",
+  "frase":"Sua boa sorte consiste em não precisar de boa sorte."
+ },
+ {
+  "autor":"Wendell Phillips",
+  "frase":"O que é a derrota? Nada além de conhecimento; nada além dos primeiros passos para algo melhor."
+ },
+ {
+  "autor":"Marco Aurélio",
+  "frase":"Se é suportável, então aguente. Pare de reclamar."
+ },
+ {
+  "autor":"Charlie Munger",
+  "frase":"Reconhecer o que você não sabe é o surgimento da sabedoria."
+ },
+ {
+  "autor":"Epicteto",
+  "frase":"Não explique sua filosofia. Incorpore isso."
+ },
+ {
+  "autor":"Chuck Palahniuk",
+  "frase":"Seu passado é apenas uma história. E uma vez que você precebe isso, ele não tem poder sobre você."
+ },
+ {
+  "autor":"Mark Twain",
+  "frase":"Eu tive muitas preocupações na vida, a maioria dos quais nunca aconteceu."
+ },
+ {
+  "autor":"Valarie Kaur",
+  "frase":"Perdoar não é esquecer.O perdão é a libertação do ódio."
+ },
+ {
+  "autor":"Epicteto",
+  "frase":"O fogo ardente produz chamas e brilho de tudo o que é jogado nele."
+ },
+ {
+  "autor":"John Graham",
+  "frase":"A vida não é um surto, mas uma escalada longa e constante."
+ },
+ {
+  "autor":"James Clear",
+  "frase":"Seja impaciente com as suas ações. Seja paciente com os resultados."
+ },
+ {
+  "autor":"Marco Aurélio",
+  "frase":"Nunca deixe o futuro incomodá-lo. Você o encontrará, se for necessário, com as mesmas armas da razão que hoje o armam contra o presente."
+ },
+ {
+  "autor":"Epicteto",
+  "frase":"Quando alguém está devidamente fundamentado na vida, não precisa procurar fora de si para obter aprovação."
+ },
+ {
+  "autor":"Sêneca",
+  "frase":"Onde quer que haja um ser humano, há uma oportunidade para uma gentileza."
+ },
+ {
+  "autor":"Jiddu Krishnamurti",
+  "frase":"A capacidade de observar sem avaliar é a forma mais alta de inteligência."
+ },
+ {
+  "autor":"Elbert Hubbard",
+  "frase":"Esforço constante e erros frequentes são os trampolins para o gênio."
+ },
+ {
+  "autor":"Marco Aurélio",
+  "frase":"Ser como a rocha sobre a qual as ondas se chocam. Ela permanece imóvel e a fúria do mar ainda cai ao seu redor."
+ },
+ {
+  "autor":"Aldous Huxley",
+  "frase":"Os fatos não deixam de existir porque são ignorados."
+ },
+ {
+  "autor":"John Barrymore",
+  "frase":"A felicidade entra sorrateiramente por uma porta que você não sabia que deixou aberta."
+ },
+ {
+  "autor":"Marco Aurélio",
+  "frase":"Se alguém puder me refutar - mostrar que estou cometendo um erro ou vendo as coisas da perspectiva errada -, mudarei com prazer."
+ },
+ {
+  "autor":"Carl Jung",
+  "frase":"Conhecer sua própria escuridão é o melhor método para lidar com com a escuridão dos outros."
+ },
+ {
+  "autor":"Sêneca",
+  "frase":"O silêncio é uma lição aprendida com os muitos sofrimentos da vida."
+ },
+ {
+  "autor":"Epicteto",
+  "frase":"As circunstâncias não fazem o homem, ela apenas o revelam a si mesmo."
+ },
+ {
   "autor":"George W. Bush",
   "frase":"Eu acredito que os seres humanos e os peixes podem viver em paz."
  },
@@ -2532,7 +2688,7 @@
   "frase":"Não ergas um edifício sem fortes alicerces ou viverás com medo."
  },
  {
-  "autor":"Stephen Covey",
+  "autor":"Alguém",
   "frase":"Trate seus funcionários assim como quer que eles tratem seus melhores clientes."
  },
  {
