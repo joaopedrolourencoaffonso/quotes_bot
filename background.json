@@ -1,89 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Frases</title>
-        <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/joaopedrolourencoaffonso/quotes_bot/main/watermark.jpg">
-        <style>
-          body{
-            background-image: url('https://images.unsplash.com/photo-1629655110625-1fd7eb8cd06a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 100%;
-          }
-          .box{
-            width: 55vh;
-            height: 20vh;
-            border: 5px solid black;
-            padding: 50px;
-            padding-right: 10px;
-            padding-left: 15px;
-            padding-top: 10px;
-            margin: 15px;
-            background-color: #f5f5dc;
-            border-radius: 12px;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            font-size: 20px;
-          }
-          .button {
-            background-color: white;
-            border: 2px solid #555555;
-            color: black;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            transition-duration: 0.4s;
-            cursor: pointer;
-          }
-          .button:hover {
-            background-color: #555555;
-            color: white;
-          }
-        </style>
-    </head>
-    <body>
-      <div class="box" id="minhacaixa">
-        <i><p id="frase">Toda grande caminhada começa com um simples passo.</p></i>
-        <i><p id="autor">    --Buda</p></i>
-
-        <button class="button" onclick="PegaFrase()">>></button>
-      </div>
-
-<script>
-  async function PegaFrase() {
-    const response = await fetch("https://raw.githubusercontent.com/joaopedrolourencoaffonso/quotes_bot/main/citacoes.json");
-    const data = await response.json();
-    const randomIndex = Math.floor(Math.random() * data.length);
-    const randomAutor = data[randomIndex]['autor'];
-    const randomFrase = data[randomIndex]['frase'];
-    document.getElementById("autor").innerHTML = "-- " + randomAutor;
-    document.getElementById("frase").innerHTML = randomFrase;
-    background();
-    
-    var box = document.getElementById('minhacaixa');
-    if (randomFrase.length > 100 && randomFrase.length < 150) {
-      box.style.width = '65vh';
-      box.style.height = '22vh';
-    } else if (randomFrase.length > 150 && randomFrase.length < 200) {
-      box.style.width = '90vh';
-      box.style.height = '30vh';
-    } else if (randomFrase.length >= 200) {
-      box.style.width = '180vh';
-      box.style.height = '20vh';
-    }  
-    else {
-      box.style.width = '60vh';
-      box.style.height = '20vh';
-    }
-    var w = window.innerWidth;
-  }
-
-  function background() {
-    images = ['https://images.unsplash.com/photo-1514897575457-c4db467cf78e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+{
+  'https://images.unsplash.com/photo-1514897575457-c4db467cf78e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
     'https://images.unsplash.com/photo-1502134249126-9f3755a50d78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
     'https://images.unsplash.com/photo-1626533844974-dfb85c6d8dad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
     'https://images.unsplash.com/photo-1677929852531-cb6da5bdbb49?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80',
@@ -115,14 +31,5 @@
     'https://images.unsplash.com/photo-1485780974122-c91bb5dcf725?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
     'https://images.unsplash.com/photo-1502085671122-2d218cd434e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=926&q=80',
     'https://images.unsplash.com/photo-1430651717504-ebb9e3e6795e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-    'https://images.unsplash.com/photo-1504712375254-d54f14d89508?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-    'https://images.unsplash.com/photo-1593069567131-53a0614dde1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80',
-    'https://images.unsplash.com/photo-1527703984053-c0e5274ade7f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-    'https://images.unsplash.com/photo-1627895455412-9d4bcf481378?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-    'https://images.unsplash.com/photo-1612686635542-2244ed9f8ddc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80']
-    const randomIndex = Math.floor(Math.random() * images.length);
-    document.body.style.backgroundImage = `url(${images[randomIndex]})`;
-  }
-</script>
-    </body>
-</html>
+    'https://images.unsplash.com/photo-1504712375254-d54f14d89508?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80'
+}
