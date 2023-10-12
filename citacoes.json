@@ -1,5 +1,17 @@
 [
- {
+  {
+   "autor":"Mulan",
+   "frase": "A flor que floresce na adversidade é a mais rara e bela de todas."
+  },
+  {
+    "autor":"Ratatouille",
+    "frase":"Você não deve deixar ninguém definir seus limites por causa de onde você vem. Seu único limite é sua alma."
+  },
+  {
+   "autor":"Hora de Aventura",
+   "frase": "Ser péssimo em alguma coisa é o primeiro passo para se tornar bom em alguma coisa."
+  },
+  {
   "autor":"Stubby Currence",
   "frase": "A única vez em que sucesso vem antes do trabalho é no dicionário."
  },
