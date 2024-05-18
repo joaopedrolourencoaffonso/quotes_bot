@@ -7,7 +7,7 @@ Um bot do telegram para dividir sabedoria com o mundo! Para ver os resultados, b
 ## Detalhes
 
 - Projeto completo! 🎉🎉🎉
-- 1139 frases para você usar onde quiser (e mais algumas quando eu tiver vontade). 
+- 1140 frases para você usar onde quiser (e mais algumas quando eu tiver vontade). 
 
 ## Autores
 
