@@ -1,5 +1,21 @@
 [
    {
+   "autor":"Sócrates",
+   "frase": "Sob a direção de um forte general, não haverá jamais soldados fracos."
+  },
+   {
+   "autor":"Lênin",
+   "frase": "A paz: uma trégua para a guerra."
+  },
+   {
+   "autor":"Napoleão Bonaparte",
+   "frase": "A guerra é uma arte simples e essencialmente prática."
+  },
+   {
+   "autor":"Maquiavel",
+   "frase": "Nunca se deve deixar que aconteça uma desordem para evitar uma guerra, pois ela é inevitável, mas, sendo protelada, resulta em tua desvantagem."
+  },
+   {
    "autor":"Ninon de Lenclos",
    "frase": "O amor é como a guerra; fácil de começar e muito difícil de terminar."
   },
