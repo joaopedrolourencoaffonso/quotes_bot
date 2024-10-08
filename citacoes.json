@@ -1,5 +1,33 @@
 [
    {
+   "autor":"Angel Ganivet",
+   "frase": "Construir sobre a vontade de uma multidão é loucura; a vontade de um povo é como um relâmpago que dura um segundo."
+  },
+   {
+   "autor":"Bill Clinton",
+   "frase": "Ser presidente é como administrar um cemitério: há um monte de gente embaixo de você, mas ninguém escuta."
+  },
+   {
+   "autor":"Desconhecido",
+   "frase": "As árvores genealógicas são a única espécie arbórea que teria razões para ocultar suas raízes."
+  },
+   {
+   "autor":"Ramón Gómez de La Serna",
+   "frase": "O paisagista pinta tranquilo porque a paisagem defronte não se pode aproximar do quadro para ver se está parecida."
+  },
+   {
+   "autor":"Paulo Coelho",
+   "frase": "O tolo que adora dar palpite sobre os nossos jardins jamais cuida de suas plantas"
+  },
+   {
+   "autor":"Anton Pavlovitch Tchékhov",
+   "frase": "Errar é humano: mais humano ainda é atribuir o erro aos outros"
+  },
+   {
+   "autor":"The British Army Journal",
+   "frase": "A melhor defesa contra a bomba atômica é não estar lá quando ela explodir"
+  },
+   {
    "autor":"Mark Stanley",
    "frase": "Sociedades funcionais têm caminhos para o perdão. Sociedades que descartam pessoas depois de um erro perdem muito talento e o aprendizado daquele erro. Isso leva a sociedades avessas ao risco que são tímidas e chatas"
   },
