@@ -1,5 +1,9 @@
 [
    {
+   "autor":"Benjamin Franklin",
+   "frase": "É falta de educação calar um idiota, e crueldade o deixar prosseguir."
+  },
+   {
    "autor":"Desconhecido",
    "frase": "Observa, escuta, cala, julga pouco, pergunta muito."
   },
@@ -4805,3 +4809,4 @@
   "frase":"Eu nunca peço perdão. Desculpe, mas é assim que eu sou."
  }
 ]
+
