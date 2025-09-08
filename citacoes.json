@@ -1,5 +1,9 @@
 [
    {
+   "autor":"Charles Caleb Colton",
+   "frase": "Os excessos de nossa mocidade são saques sobre a nossa velhice, pagáveis com juros trinta anos depois."
+  },
+   {
    "autor":"Benjamin Franklin",
    "frase": "É falta de educação calar um idiota, e crueldade o deixar prosseguir."
   },
@@ -4809,4 +4813,5 @@
   "frase":"Eu nunca peço perdão. Desculpe, mas é assim que eu sou."
  }
 ]
+
 
